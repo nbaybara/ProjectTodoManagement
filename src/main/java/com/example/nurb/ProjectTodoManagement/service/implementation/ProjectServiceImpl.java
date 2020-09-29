@@ -45,7 +45,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public Page<Project> getAllPageable(Pageable pageable) {
-        return projectRepository.findAll(pageable);
+        return null;
     }
 
     @Override

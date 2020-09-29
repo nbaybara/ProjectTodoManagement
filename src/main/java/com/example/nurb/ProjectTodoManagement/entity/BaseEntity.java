@@ -17,11 +17,12 @@ public abstract class BaseEntity implements Serializable {
     //Her tabloda olmasını istediğim tablolar
     //Data annotation get set metodlarını otomatik olarak getiriyor. :)
     // Bu fieldlerin özelliklerini detaylandırmak için Column kullanıyoruz.
-    @Column(name="created_at")
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="created_at")
     private Date createdAt;
     @Column(name="created_by",length = 100)
     private String createdBy;
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name="updated_at")
     private Date updatedAt;
     @Column(name="updated_by",length = 100)
