@@ -7,6 +7,8 @@ import com.example.nurb.ProjectTodoManagement.util.TPage;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import javax.validation.Valid;
+
 
 public interface TaskService {
 
@@ -16,6 +18,7 @@ public interface TaskService {
 
     TPage<TaskDto> getAllPageable(Pageable pageable);
 
-    Boolean delete(TaskDto task);
+    Boolean delete(Long task);
+    TaskDto update(Long id , @Valid TaskDto project);
 
 }

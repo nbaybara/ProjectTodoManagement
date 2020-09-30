@@ -35,7 +35,8 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public TaskDto getById(Long id) {
-        return null;
+        Task task = taskRepository.getOne(id);
+        return modelMapper.map(task, TaskDto.class);
     }
 
     @Override
@@ -48,7 +49,12 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Boolean delete(TaskDto task) {
+    public Boolean delete(Long taskId) {
+        taskRepository.deleteById(taskId);
+        return null;
+    }
+
+    public TaskDto update(Long id, TaskDto project) {
         return null;
     }
 }
