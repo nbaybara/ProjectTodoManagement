@@ -60,7 +60,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public Boolean delete(Long id) {
-         projectRepository.deleteById(id);
+        projectRepository.deleteById(id);
         return true;
     }
 
@@ -78,7 +78,7 @@ public class ProjectServiceImpl implements ProjectService {
         projectDb.setProjectName(project.getProjectName());
         projectRepository.save(projectDb);
 
-        return modelMapper.map(projectDb,ProjectDto.class);
+        return modelMapper.map(projectDb, ProjectDto.class);
     }
 
 

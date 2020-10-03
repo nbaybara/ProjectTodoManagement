@@ -5,13 +5,15 @@ import com.example.nurb.ProjectTodoManagement.service.implementation.ProjectServ
 import com.example.nurb.ProjectTodoManagement.util.ApiPaths;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.http.HttpMethod;
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(ApiPaths.ProjectCtrl.CTRL)
-@Api(value = ApiPaths.ProjectCtrl.CTRL, description = "Project APIs")
+@Api(value = ApiPaths.ProjectCtrl.CTRL, tags = "Project APIs")
+@Slf4j
 public class ProjectController {
     //Http Metodları GET_Post Put Delete
     //Response Entity Api metodların ortak bir imzaya sahip olması ve
@@ -24,7 +26,9 @@ public class ProjectController {
 
     @GetMapping("/{id}")
     @ApiOperation(value = "Get By Id Operation", response = ProjectDto.class)
-    public ResponseEntity<ProjectDto> getById(@PathVariable("id") Long id) {
+    public ResponseEntity<ProjectDto> getById(@PathVariable(value="id", required =true) Long id) {
+        log.info("Project Controller=> GetById->PARAM:" +id);
+        log.info("Project Controller=> GetById");
         ProjectDto projectDto = projectServiceImpl.getById(id);
         return ResponseEntity.ok(projectDto);
     }
