@@ -1,17 +1,16 @@
 package com.example.nurb.ProjectTodoManagement.service.implementation;
-
 import com.example.nurb.ProjectTodoManagement.dto.ProjectDto;
 import com.example.nurb.ProjectTodoManagement.entity.Project;
 import com.example.nurb.ProjectTodoManagement.repository.ProjectRepository;
 import com.example.nurb.ProjectTodoManagement.service.ProjectService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
-
+@Slf4j
 @Service
 public class ProjectServiceImpl implements ProjectService {
 
@@ -31,6 +30,7 @@ public class ProjectServiceImpl implements ProjectService {
             throw new IllegalArgumentException("Project Code Already exist");
         }
         Project p = modelMapper.map(project, Project.class);
+        p=projectRepository.save(p);
         project.setId(p.getId());
         return project;
 
@@ -38,6 +38,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public ProjectDto getById(Long id) {
+        log.info("ccc " + id);
         Project p = projectRepository.getOne(id);
         return modelMapper.map(p, ProjectDto.class);
 
@@ -49,7 +50,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public List<Project> getByProjectCodeAContains(String projectCode) {
+    public List<Project> getByProjectCodeContains(String projectCode) {
         return null;
     }
 
@@ -58,10 +59,13 @@ public class ProjectServiceImpl implements ProjectService {
         return null;
     }
 
-    @Override
     public Boolean delete(Long id) {
         projectRepository.deleteById(id);
         return true;
+    }
+    @Override
+    public Boolean delete(ProjectDto project) {
+        return null;
     }
 
     @Override

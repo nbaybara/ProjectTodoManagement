@@ -6,12 +6,11 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "project")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@EqualsAndHashCode
-
 public class Project extends BaseEntity {
 
     @Id
