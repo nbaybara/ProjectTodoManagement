@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ProjectComponent implements OnInit {
 
   constructor() { }
-
+  projectMessage = 'Project Message';
   ngOnInit(): void {
   }
 
